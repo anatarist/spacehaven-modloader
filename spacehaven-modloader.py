@@ -97,7 +97,10 @@ class Window(Frame):
         self.autolocateSpacehaven()
 
     def autolocateSpacehaven(self):
-        self.spacehavenPath = None
+        self.gamePath = None
+        self.jarPath = None
+        self.modPath = None
+
         for location in POSSIBLE_SPACEHAVEN_LOCATIONS:
             if os.path.exists(location):
                 self.locateSpacehaven(location)
@@ -120,7 +123,15 @@ class Window(Frame):
         self.spacehavenText.delete(0, 'end')
         self.spacehavenText.insert(0, self.gamePath)
 
+        self.checkForLoadedMods()
+
         self.refreshModList()
+
+    def checkForLoadedMods(self):
+        if self.jarPath is None:
+            return
+
+        loader.load.unload(self.jarPath)
 
     def browseForSpacehaven(self):
         self.locateSpacehaven(
