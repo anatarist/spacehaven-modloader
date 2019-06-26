@@ -57,18 +57,16 @@ class Window(Frame):
         self.modList.bind('<<ListboxSelect>>', self.showCurrentMod)
         self.modList.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-        self.modListOpenFolder = Button(self.modListFrame, text="Open Folder...", command=self.openModFolder)
+        self.modListOpenFolder = Button(self.modListFrame, text="Open Mods Folder", command=self.openModFolder)
         self.modListOpenFolder.pack(fill=X, padx=4, pady=4)
 
         self.modListFrame.pack(side=LEFT, fill=Y, expand=1, padx=4, pady=4)
 
         self.modDetailsFrame = Frame(self.modBrowser)
-        self.modDetailsName = Label(self.modDetailsFrame, text="(no mod selected)", font="TkDefaultFont 14 bold", anchor=W)
+        self.modDetailsName = Label(self.modDetailsFrame, font="TkDefaultFont 14 bold", anchor=W)
         self.modDetailsName.pack(fill=X, padx=4, pady=4)
 
         self.modDetailsDescription = Text(self.modDetailsFrame, wrap=WORD, font="TkDefaultFont", height=0)
-        self.modDetailsDescription.insert(END, "Select a mod for details...")
-        self.modDetailsDescription.config(state='disabled')
         self.modDetailsDescription.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
         self.modDetailsFrame.pack(fill=BOTH, expand=1, padx=4, pady=4)
@@ -134,8 +132,7 @@ class Window(Frame):
         self.modList.delete(0, END)
 
         if self.modPath is None:
-            self.mods = [{"name": "(not found)", "description": "Please use the Browse button above to locate Spacehaven."}]
-            self.showCurrentMod()
+            self.showMod("(spacehaven not found)", "Please use the Browse button above to locate Spacehaven.")
             return
 
         self.modDatabase = ui.modDatabase.ModDatabase(self.modPath)
@@ -143,18 +140,27 @@ class Window(Frame):
         for mod in self.modDatabase.mods:
             self.modList.insert(END, mod.name)
 
+        self.showCurrentMod()
+
     def showCurrentMod(self, _arg=None):
-        if len(self.modList.curselection()) == 0:
-            mod = self.modDatabase.mods[0]
+        if len(self.modDatabase.mods) == 0:
+            self.showMod("(no mods found)", "Please install some mods into your mods folder.")
+
+        elif len(self.modList.curselection()) == 0:
+            self.showMod("(none)", "Please select a mod from the list")
+
         else:
             mod = self.modDatabase.mods[self.modList.curselection()[0]]
+            self.showMod(mod.name, mod.description)
 
-        self.modDetailsName.config(text=mod.name)
+    def showMod(self, name, description):
+        self.modDetailsName.config(text=name)
 
         self.modDetailsDescription.config(state="normal")
         self.modDetailsDescription.delete(1.0, END)
-        self.modDetailsDescription.insert(END, mod.description)
+        self.modDetailsDescription.insert(END, description)
         self.modDetailsDescription.config(state="disabled")
+
 
     def openModFolder(self):
         ui.launcher.open(self.modPath)
