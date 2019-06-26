@@ -11,7 +11,10 @@ PATCHABLE_FILES = [
   'library/animations'
 ]
 
+
 def extract(jarPath, corePath):
+  """Extract library files from spacehaven.jar"""
+
   if not os.path.exists(corePath):
     os.mkdir(corePath)
 
@@ -20,8 +23,9 @@ def extract(jarPath, corePath):
       if file.startswith("library/") and not file.endswith("/"):
         spacehaven.extract(file, corePath)
 
-
 def patch(jarPath, corePath, resultPath):
+  """Patch spacehaven.jar with custom library files"""
+
   original = ZipFile(jarPath, "r")
   patched = ZipFile(resultPath, "w")
 

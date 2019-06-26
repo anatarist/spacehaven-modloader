@@ -9,6 +9,7 @@ def annotate(corePath):
   haven = ElementTree.parse(os.path.join(corePath, "library", "haven"), parser=XMLParser(recover=True))
   texts = ElementTree.parse(os.path.join(corePath, "library", "texts"), parser=XMLParser(recover=True))
 
+  # Load texts
   tids = {}
   for text in texts.getroot():
     tids[text.get("id")] = text.find("EN").text
@@ -24,6 +25,7 @@ def annotate(corePath):
 
     return tids[tid]
 
+  # Annotate Elements
   for element in haven.find("Element"):
     mid = element.get("mid")
 
@@ -31,6 +33,7 @@ def annotate(corePath):
     if objectInfo is not None:
       element.set("_name", nameOf(objectInfo))
 
+  # Annotate basic products
   elementNames = {}
   for element in haven.find("Product"):
     name = nameOf(element) or element.get("elementType") or ""
@@ -38,6 +41,7 @@ def annotate(corePath):
     element.set("_name", name)
     elementNames[element.get("eid")] = name
 
+  # Annotate process products
   for element in haven.find("Product"):
     processName = []
 

@@ -11,6 +11,8 @@ from PIL import Image
 
 
 def explode(corePath):
+  """Decode textures and write them out as individual regions"""
+
   animations = lxml.etree.parse(os.path.join(corePath, "library", "animations"), parser=lxml.etree.XMLParser(recover=True))
   textures = lxml.etree.parse(os.path.join(corePath, "library", "textures"), parser=lxml.etree.XMLParser(recover=True))
   cims = {}
