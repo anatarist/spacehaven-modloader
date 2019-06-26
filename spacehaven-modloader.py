@@ -20,9 +20,13 @@ POSSIBLE_SPACEHAVEN_LOCATIONS = [
     # MacOS
     "/Applications/spacehaven.app",
     "/Applications/Games/spacehaven.app",
-    "/Applications/Games/Space Haven/spacehaven.app"
+    "/Applications/Games/Space Haven/spacehaven.app",
 
-    # Windows?
+    # Windows
+    "../spacehaven/spacehaven.exe",
+    "../../spacehaven/spacehaven.exe",
+    "../spacehaven.exe",
+    "../../spacehaven.exe",
 
     # Linux?
 ]
@@ -69,7 +73,7 @@ class Window(Frame):
         self.modListOpenFolder = Button(self.modListFrame, text="Open Mods Folder", command=self.openModFolder)
         self.modListOpenFolder.pack(fill=X, padx=4, pady=4)
 
-        self.modListFrame.pack(side=LEFT, fill=Y, expand=1, padx=4, pady=4)
+        self.modListFrame.pack(side=LEFT, fill=Y, padx=4, pady=4)
 
         self.modDetailsFrame = Frame(self.modBrowser)
         self.modDetailsName = Label(self.modDetailsFrame, font="TkDefaultFont 14 bold", anchor=W)
@@ -101,6 +105,7 @@ class Window(Frame):
         self.modPath = None
 
         for location in POSSIBLE_SPACEHAVEN_LOCATIONS:
+            location = os.path.abspath(location)
             if os.path.exists(location):
                 self.locateSpacehaven(location)
                 return
@@ -118,6 +123,14 @@ class Window(Frame):
             self.gamePath = path
             self.jarPath = path
             self.modPath = os.path.join(os.path.dirname(path), "mods")
+           
+        elif path.endswith('.exe'):
+            self.gamePath = path
+            self.jarPath = os.path.join(os.path.dirname(path), "spacehaven.jar")
+            self.modPath = os.path.join(os.path.dirname(path), "mods")
+        
+        if not os.path.exists(self.modPath):
+            os.mkdir(self.modPath)
 
         self.spacehavenText.delete(0, 'end')
         self.spacehavenText.insert(0, self.gamePath)
@@ -152,7 +165,7 @@ class Window(Frame):
         self.modList.delete(0, END)
 
         if self.modPath is None:
-            self.showMod("(spacehaven not found)", "Please use the Browse button above to locate Spacehaven.")
+            self.showMod("Spacehaven not found", "Please use the Browse button above to locate Spacehaven.")
             return
 
         self.modDatabase = ui.database.ModDatabase(self.modPath)
@@ -164,7 +177,7 @@ class Window(Frame):
 
     def showCurrentMod(self, _arg=None):
         if len(self.modDatabase.mods) == 0:
-            self.showMod("(no mods found)", "Please install some mods into your mods folder.")
+            self.showMod("No mods found", "Please install some mods into your mods folder.")
             return
 
         if len(self.modList.curselection()) == 0:

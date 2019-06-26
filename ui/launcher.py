@@ -1,4 +1,5 @@
 
+import os
 import sys
 import subprocess
 
@@ -7,7 +8,7 @@ def launchAndWait(path):
     """Launch the game and wait for it to exit"""
 
     if sys.platform == 'win32':
-        os.startfile(path)
+        subprocess.call(path)
     elif sys.platform == 'darwin':
         subprocess.call(["open", path, "-W"])
     else:
