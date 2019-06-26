@@ -7,13 +7,15 @@ Usage:
 
 from setuptools import setup
 
+import version
+
 APP = ['spacehaven-modloader.py']
 DATA_FILES = []
 OPTIONS = {}
 
 setup(
     name="spacehaven-modloader",
-    version="0.1",
+    version=version.version,
     app=APP,
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},

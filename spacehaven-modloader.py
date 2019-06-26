@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+import pkg_resources
 
 from tkinter import filedialog
 from tkinter import messagebox
@@ -14,6 +15,8 @@ import ui.launcher
 import loader.extract
 import loader.load
 
+import version
+
 POSSIBLE_SPACEHAVEN_LOCATIONS = [
     # MacOS
     "/Applications/spacehaven.app",
@@ -25,13 +28,12 @@ POSSIBLE_SPACEHAVEN_LOCATIONS = [
     # Linux?
 ]
 
-
 class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
 
-        self.master.title("Space Haven Mod Loader")
+        self.master.title("Space Haven Mod Loader v{}".format(version.version))
         self.master.bind('<FocusIn>', self.focus)
 
         self.headerImage = PhotoImage(data=ui.header.image, width=1680, height=30)
