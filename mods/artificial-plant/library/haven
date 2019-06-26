@@ -1,6 +1,6 @@
 <data>
   <Element>
-    <me _name="Artificial Plant" alternateY="false" costGroup="950" ec="1" mid="10102" nonSymmetrical="false" offsetRot="R0">
+    <me _name="Artificial Plant" alternateY="false" costGroup="950" ec="1" mid="45110002" nonSymmetrical="false" offsetRot="R0">
       <data>
         <l eid="2" gridOffX="0" gridOffY="0" layer="0" type="Object">
           <element id="0" lightValue="Low" renderOnFloor="false" userTogglable="false" walkGridCost="255">
@@ -24,8 +24,8 @@
       </linked>
       <events />
       <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
-        <name tid="10100" />
-        <desc tid="10101" />
+        <name tid="45110000" />
+        <desc tid="45110001" />
         <guiIcon aid="build_icon_plant" />
         <subCat id="1506" />
         <restrictions>

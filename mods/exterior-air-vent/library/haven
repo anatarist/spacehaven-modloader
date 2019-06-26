@@ -1,6 +1,6 @@
 <data>
   <Element>
-    <me _name="Exterior Air Vent" alternateY="false" costGroup="950" ec="1" mid="10001" nonSymmetrical="false" offsetRot="R0">
+    <me _name="Exterior Air Vent" alternateY="false" costGroup="950" ec="1" mid="45110101" nonSymmetrical="false" offsetRot="R0">
       <data>
         <l eid="1" gridOffX="0" gridOffY="0" layer="0" type="Object">
           <element id="0" lightValue="None" renderOnFloor="false" userTogglable="false" walkGridCost="255">
@@ -48,8 +48,8 @@
       </linked>
       <events />
       <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
-        <name tid="10002" />
-        <desc tid="10003" />
+        <name tid="45110102" />
+        <desc tid="45110103" />
         <guiIcon aid="airventExtIcon" />
         <subCat id="1521" />
         <restrictions>

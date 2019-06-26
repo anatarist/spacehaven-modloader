@@ -1,6 +1,6 @@
 <AllAnimations>
   <animations>
-    <ba n="airvent1BExt" f="30" ks="1" id="10006">
+    <ba n="airvent1BExt" f="30" ks="1" id="45110106">
       <bones>
         <b id="0">
           <pos>
@@ -14,7 +14,7 @@
         <assetPos vf="1:1" bi="0" x="-14" y="2" sx="-1" sy="1" r="0" a="671"/>
       </items>
     </ba>
-    <ba n="airvent1CFExt" f="30" ks="1" id="10007">
+    <ba n="airvent1CFExt" f="30" ks="1" id="45110107">
       <bones>
         <b id="0">
           <pos>
@@ -26,7 +26,7 @@
         <assetPos vf="1:1" bi="0" x="-20" y="-3" sx="1" sy="1" r="0" a="907"/>
       </items>
     </ba>
-    <ba n="airventExtIcon" f="30" ks="1" id="10008">
+    <ba n="airventExtIcon" f="30" ks="1" id="45110108">
       <bones>
         <b id="0">
           <pos>

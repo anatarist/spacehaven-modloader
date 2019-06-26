@@ -1,0 +1,261 @@
+<data>
+  <Product>
+    <!-- Root Vegetables: Need 0C - 20C -->
+    <product _name="Root vegetables" eid="17" type="Crop">
+        <name tid="61" />
+        <GUIAnimation aid="spaceFoodIcon1" />
+        <stages>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="293" minTemp="273" oxygenPerMinute="10" stage="1" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato1" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="293" minTemp="273" oxygenPerMinute="10" stage="2" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato2" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="293" minTemp="273" oxygenPerMinute="10" stage="3" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato3" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="293" minTemp="273" oxygenPerMinute="10" stage="4" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato4" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="293" minTemp="273" oxygenPerMinute="10" stage="5" time="1">
+                <harvestable>
+                    <products>
+                        <l element="15" howMuch="2" produceEvery="1" />
+                        <l element="71" howMuch="0" produceEvery="1" />
+                    </products>
+                </harvestable>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato5" />
+                    </l>
+                </anims>
+            </l>
+        </stages>
+        <plantingPenalty penalty="-50" />
+        <difficulty level="1" skill="Farming" />
+        <desc tid="62" />
+    </product>
+
+    <!-- Fruits: Need 25C - 40C, High light level -->
+    <product _name="Fruits" eid="704" type="Crop">
+        <name tid="422" />
+        <GUIAnimation aid="spaceFoodIcon1" />
+        <stages>
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="1" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato1" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="2" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato2" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="3" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato3" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="4" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato4" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="5" time="1">
+                <harvestable>
+                    <products>
+                        <l element="706" howMuch="2" produceEvery="1" />
+                        <l element="71" howMuch="0" produceEvery="1" />
+                    </products>
+                </harvestable>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato5" />
+                    </l>
+                </anims>
+            </l>
+        </stages>
+        <plantingPenalty penalty="-75" />
+        <difficulty level="2" skill="Farming" />
+        <desc tid="424" />
+    </product>
+
+    <!-- Artificial Meat: Needs 50C - 95C -->
+    <product _name="Artificial meat" eid="705" type="Crop">
+        <name tid="423" />
+        <GUIAnimation aid="spaceFoodIcon1" />
+        <stages>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="368" minTemp="323" oxygenPerMinute="0" stage="1" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato1" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="368" minTemp="323" oxygenPerMinute="0" stage="2" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato2" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="368" minTemp="323" oxygenPerMinute="0" stage="3" time="1300">
+                <needs>
+                    <l consumeEvery="2" element="16" howMuch="1" />
+                </needs>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato3" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="368" minTemp="323" oxygenPerMinute="0" stage="4" time="1300">
+                <tend penalty="-50" />
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato4" />
+                    </l>
+                </anims>
+            </l>
+            <l co2PerMinute="3" lightNeeded="Medium" maxTemp="368" minTemp="323" oxygenPerMinute="0" stage="5" time="1">
+                <harvestable>
+                    <products>
+                        <l element="707" howMuch="1" produceEvery="1" />
+                        <l element="71" howMuch="0" produceEvery="1" />
+                    </products>
+                </harvestable>
+                <anims>
+                    <l dir="D1" type="Single" useFlipped="true">
+                        <animation aid="potato5" />
+                    </l>
+                </anims>
+            </l>
+        </stages>
+        <plantingPenalty penalty="-75" />
+        <difficulty level="3" skill="Farming" />
+        <desc tid="425" />
+    </product>
+
+    <!-- NEW: Force-grown bug meat: An industrial process. Requires a temperature of 50C to 95C, emits hazardous gas, and requires metals rather than water to grow -->
+    <product _name="Monster Meat" eid="45110200" type="Crop">
+      <name tid="488" />
+      <GUIAnimation aid="spaceFoodIcon1" />
+      <stages>
+        <l co2PerMinute="0" lightNeeded="Low" minTemp="323" maxTemp="373" oxygenPerMinute="0" stage="1" time="1300">
+          <needs>
+            <l consumeEvery="10" element="162" howMuch="1" />
+          </needs>
+          <anims>
+            <l dir="D1" type="Single" useFlipped="true">
+              <animation aid="potato1" />
+            </l>
+          </anims>
+          <harvestable>
+            <products>
+              <l _name="Hazard Gas" element="971" howMuch="50" produceEvery="1" />
+            </products>
+          </harvestable>
+        </l>
+        <l co2PerMinute="0" lightNeeded="Low" minTemp="323" maxTemp="373" oxygenPerMinute="0" stage="2" time="1300">
+          <tend penalty="-50" />
+          <anims>
+            <l dir="D1" type="Single" useFlipped="true">
+              <animation aid="potato2" />
+            </l>
+          </anims>
+          <harvestable>
+            <products>
+              <l _name="Hazard Gas" element="971" howMuch="50" produceEvery="1" />
+            </products>
+          </harvestable>
+        </l>
+        <l co2PerMinute="0" lightNeeded="Low" minTemp="323" maxTemp="373" oxygenPerMinute="0" stage="3" time="1300">
+          <anims>
+            <l dir="D1" type="Single" useFlipped="true">
+              <animation aid="potato3" />
+            </l>
+          </anims>
+          <harvestable>
+            <products>
+              <l _name="Hazard Gas" element="971" howMuch="50" produceEvery="1" />
+            </products>
+          </harvestable>
+        </l>
+        <l co2PerMinute="0" lightNeeded="Low" minTemp="323" maxTemp="373" oxygenPerMinute="0" stage="4" time="1300">
+          <anims>
+            <l dir="D1" type="Single" useFlipped="true">
+              <animation aid="potato4" />
+            </l>
+          </anims>
+          <harvestable>
+            <products>
+              <l _name="Hazard Gas" element="971" howMuch="50" produceEvery="1" />
+            </products>
+          </harvestable>
+        </l>
+        <l co2PerMinute="0" lightNeeded="Low" minTemp="323" maxTemp="373" oxygenPerMinute="0" stage="5" time="1">
+          <harvestable>
+            <products>
+              <l _name="Hazard Gas" element="971" howMuch="50" produceEvery="1" />
+
+              <l _name="Monster Meat" element="984" howMuch="3" produceEvery="1" />
+              <l _name="Bio Matter" element="71" howMuch="0" produceEvery="1" />
+            </products>
+          </harvestable>
+          <anims>
+            <l dir="D1" type="Single" useFlipped="true">
+              <animation aid="potato5" />
+            </l>
+          </anims>
+        </l>
+      </stages>
+      <plantingPenalty penalty="-75" />
+      <difficulty level="2" skill="Farming" />
+      <desc tid="489" />
+    </product>
+  </Element>
+</data>

@@ -200,11 +200,11 @@ class Window(Frame):
 
 if __name__ == "__main__":
     root = Tk()
-    root.geometry("600x590")
+    root.geometry("890x639")
 
     # HACK: Button labels don't appear until the window is resized with py2app
     def fixNoButtonLabelsBug():
-        root.geometry("600x600")
+        root.geometry("890x640")
 
     app = Window(root)
     root.update()
