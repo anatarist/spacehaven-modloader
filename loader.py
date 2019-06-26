@@ -35,7 +35,7 @@ class Window(Frame):
     self.master.title("Spacehaven Mod Loader")
     self.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-    self.spacehavenJarLabel = Label(self, text="Game Location (spacehaven.jar or spacehaven.app)")
+    self.spacehavenJarLabel = Label(self, text="Spacehaven Game Location", anchor=NW)
     self.spacehavenJarLabel.pack(fill=X, padx=4, pady=4)
 
     self.jarPicker = Frame(self)
@@ -47,24 +47,37 @@ class Window(Frame):
 
     self.jarPicker.pack(fill=X, padx=0, pady=0)
 
-    self.modLabel = Label(self, text="Downloaded mods")
+    Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
+
+    self.modLabel = Label(self, text="Downloaded mods", anchor=NW)
     self.modLabel.pack(fill=X, padx=4, pady=4)
 
     self.modBrowser = Frame(self)
 
-    self.modList = Listbox(self.modBrowser, height=10)
+    self.modListFrame = Frame(self.modBrowser)
+    self.modList = Listbox(self.modListFrame, height=0)
     self.modList.bind('<<ListboxSelect>>', self.browseMod)
-    self.modList.pack(side=LEFT, fill=Y, padx=4, pady=4)
+    self.modList.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-    self.modDetails = Text(self.modBrowser, wrap=WORD, font="TkDefaultFont")
-    self.modDetails.insert(END, "Click on a mod for details...")
-    self.modDetails.config(state='disabled')
-    self.modDetails.pack(fill=BOTH, expand=1, padx=4, pady=4)
+    self.modListOpenFolder = Button(self.modListFrame, text="Browse...")
+    self.modListOpenFolder.pack(fill=X, padx=4, pady=4)
+
+    self.modListFrame.pack(side=LEFT, fill=Y, expand=1, padx=4, pady=4)
+
+    self.modDetailsFrame = Frame(self.modBrowser)
+    self.modDetailsName = Label(self.modDetailsFrame, text="(no mod selected)", font="TkDefaultFont 14 bold", anchor=W)
+    self.modDetailsName.pack(fill=X, padx=4, pady=4)
+
+    self.modDetailsDescription = Text(self.modDetailsFrame, wrap=WORD, font="TkDefaultFont", height=0)
+    self.modDetailsDescription.insert(END, "Select a mod for details...")
+    self.modDetailsDescription.config(state='disabled')
+    self.modDetailsDescription.pack(fill=BOTH, expand=1, padx=4, pady=4)
+
+    self.modDetailsFrame.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
     self.modBrowser.pack(fill=BOTH, expand=1, padx=0, pady=0)
 
-    self.browseButton = Button(self, text="Open mods folder")
-    self.browseButton.pack(fill=X, padx=4, pady=4)
+    Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
     self.launchButton = Button(self, text="Launch Spacehaven!")
     self.launchButton.pack(fill=X, padx=4, pady=4)
@@ -76,7 +89,8 @@ class Window(Frame):
       parent=self.master,
       title="Locate spacehaven",
       filetypes=[
-        ('spacehaven.app', '*.app')
+        ('spacehaven.app', '*.app'),
+        ('spacehaven.jar', '*.jar'),
       ]
     )
 
@@ -99,10 +113,12 @@ class Window(Frame):
   def browseMod(self, args):
     mod = self.mods[self.modList.curselection()[0]]
 
-    self.modDetails.config(state="normal")
-    self.modDetails.delete(1.0, END)
-    self.modDetails.insert(END, mod["description"])
-    self.modDetails.config(state="disabled")
+    self.modDetailsName.config(text=mod["name"])
+
+    self.modDetailsDescription.config(state="normal")
+    self.modDetailsDescription.delete(1.0, END)
+    self.modDetailsDescription.insert(END, mod["description"])
+    self.modDetailsDescription.config(state="disabled")
 
 if __name__ == "__main__":
   root = Tk()
