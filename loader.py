@@ -94,8 +94,17 @@ class Window(Frame):
 
     Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
-    self.launchButton = Button(self, text="Launch Spacehaven!")
+    self.launchButton = Button(self, text="Launch Spacehaven!", bg='red')
     self.launchButton.pack(fill=X, padx=4, pady=4)
+
+    self.revertButton = Button(self, text="Revert to vanilla")
+    self.revertButton.pack(fill=X, padx=4, pady=4)
+
+    self.revertButton = Button(self, text="Extract & annotate game assets")
+    self.revertButton.pack(fill=X, padx=4, pady=4)
+
+    self.quitButton = Button(self, text="Quit", command=self.quit)
+    self.quitButton.pack(fill=X, padx=4, pady=4)
 
     self.autolocateSpacehaven()
 
@@ -174,10 +183,13 @@ class Window(Frame):
     else:
       subprocess.call(["xdg-open", self.spacehavenModPath])
 
+  def quit(self):
+    self.master.destroy()
+
 
 if __name__ == "__main__":
   root = Tk()
-  root.geometry("720x600")
+  root.geometry("600x600")
 
   app = Window(root)
   root.mainloop()
