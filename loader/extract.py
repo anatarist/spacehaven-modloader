@@ -6,10 +6,8 @@ import loader.assets.explode
 import loader.assets.annotate
 
 
-def extract(jarPath, modPath):
+def extract(jarPath, corePath):
   """Extract and annotate game assets"""
-
-  corePath = os.path.join(modPath, "spacehaven")
 
   loader.assets.library.extract(jarPath, corePath)
 

@@ -5,6 +5,11 @@ import click
 
 from zipfile import ZipFile
 
+PATCHABLE_FILES = [
+  'library/haven',
+  'library/texts',
+  'library/animations'
+]
 
 def extract(jarPath, corePath):
   if not os.path.exists(corePath):
@@ -16,27 +21,15 @@ def extract(jarPath, corePath):
         spacehaven.extract(file, corePath)
 
 
-def patch(files):
-  original = ZipFile(spacehaven_jar, "r")
-  patched = ZipFile(spacehaven_jar + ".patched", "w")
+def patch(jarPath, corePath, resultPath):
+  original = ZipFile(jarPath, "r")
+  patched = ZipFile(resultPath, "w")
 
   for file in set(original.namelist()):
-    if not file.endswith("/") and not file in files:
+    if not file.endswith("/") and not file in PATCHABLE_FILES:
       patched.writestr(file, original.read(file))
 
-  for file in files:
-    patched.write("spacehaven/{}".format(file), file)
+  for file in PATCHABLE_FILES:
+    patched.write(os.path.join(corePath, file.replace('/', os.sep)), file)
 
   patched.close()
-
-  shutil.copy(
-    spacehaven_jar,
-    spacehaven_jar + ".1"
-  )
-
-  shutil.move(
-    spacehaven_jar + ".patched",
-    spacehaven_jar
-  )
-
-  print("Patched Space Haven: {} files".format(len(files)))

@@ -11,6 +11,7 @@ from tkinter import *
 import ui.modDatabase
 import ui.launcher
 import loader.extract
+import loader.load
 
 POSSIBLE_SPACEHAVEN_LOCATIONS = [
   # MacOS
@@ -156,17 +157,25 @@ class Window(Frame):
     self.modDetailsDescription.config(state="disabled")
 
   def openModFolder(self):
-    ui.launcher.launch(self.modPath)
+    ui.launcher.open(self.modPath)
 
   def extractAndAnnotate(self):
     if not messagebox.askokcancel("Extract & Annotate", "Extracting and annotating game assets will take a minute or two.\n\nWould you like to proceed?"):
       return
 
-    loader.extract.extract(self.jarPath, self.modPath)
-    ui.launcher.launch(os.path.join(self.modPath, 'spacehaven'))
+    corePath = os.path.join(self.modPath, "spacehaven")
+
+    loader.extract.extract(self.jarPath, corePath)
+    ui.launcher.open(corePath)
 
   def patchAndLaunch(self):
-    pass
+    activeModPaths = []
+    for mod in self.modDatabase.mods:
+      activeModPaths.append(mod.path)
+
+    loader.load.load(self.jarPath, activeModPaths)
+    ui.launcher.launchAndWait(self.gamePath)
+    loader.load.unload(self.jarPath)
 
   def quit(self):
     self.master.destroy()
