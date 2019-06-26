@@ -8,29 +8,29 @@ import loader.assets.merge
 
 
 def load(jarPath, modPaths):
-  """Load mods into spacehaven.jar"""
+    """Load mods into spacehaven.jar"""
 
-  unload(jarPath)
+    unload(jarPath)
 
-  coreDirectory = tempfile.TemporaryDirectory()
-  corePath = coreDirectory.name
+    coreDirectory = tempfile.TemporaryDirectory()
+    corePath = coreDirectory.name
 
-  loader.assets.library.extract(jarPath, corePath)
-  loader.assets.merge.mods(corePath, modPaths)
+    loader.assets.library.extract(jarPath, corePath)
+    loader.assets.merge.mods(corePath, modPaths)
 
-  os.rename(jarPath, jarPath + '.vanilla')
-  loader.assets.library.patch(jarPath + '.vanilla', corePath, jarPath)
+    os.rename(jarPath, jarPath + '.vanilla')
+    loader.assets.library.patch(jarPath + '.vanilla', corePath, jarPath)
 
-  coreDirectory.cleanup()
+    coreDirectory.cleanup()
 
 
 def unload(jarPath):
-  """Unload mods from spacehaven.jar"""
+    """Unload mods from spacehaven.jar"""
 
-  vanillaPath = jarPath + '.vanilla'
+    vanillaPath = jarPath + '.vanilla'
 
-  if not os.path.exists(vanillaPath):
-    return
+    if not os.path.exists(vanillaPath):
+        return
 
-  os.remove(jarPath)
-  os.rename(vanillaPath, jarPath)
+    os.remove(jarPath)
+    os.rename(vanillaPath, jarPath)

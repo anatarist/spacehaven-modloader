@@ -5,46 +5,47 @@ from xml.etree import ElementTree
 
 
 class ModDatabase:
-  """Information about a collection of mods"""
+    """Information about a collection of mods"""
 
-  def __init__(self, path):
-    self.path = path
-    self.locateMods()
+    def __init__(self, path):
+        self.path = path
+        self.locateMods()
 
-  def locateMods(self):
-    self.mods = []
+    def locateMods(self):
+        self.mods = []
 
-    for modFolder in os.listdir(self.path):
-      if modFolder == 'spacehaven':
-        continue # don't need to load core game definitions
+        for modFolder in os.listdir(self.path):
+            if modFolder == 'spacehaven':
+                continue  # don't need to load core game definitions
 
-      self.mods.append(Mod(os.path.join(self.path, modFolder)))
+            self.mods.append(Mod(os.path.join(self.path, modFolder)))
 
-    self.mods.sort(key=lambda mod: mod.name)
+        self.mods.sort(key=lambda mod: mod.name)
+
 
 class Mod:
-  """Details about a specific mod (name, description)"""
+    """Details about a specific mod (name, description)"""
 
-  def __init__(self, path):
-    self.path = path
-    self.name = os.path.basename(self.path)
+    def __init__(self, path):
+        self.path = path
+        self.name = os.path.basename(self.path)
 
-    self.loadInfo()
+        self.loadInfo()
 
-  def loadInfo(self):
-    infoFile = os.path.join(self.path, "info")
+    def loadInfo(self):
+        infoFile = os.path.join(self.path, "info")
 
-    if not os.path.exists(infoFile):
-      self.description = "Cannot load mod: no info file present. Please create one."
-      return
+        if not os.path.exists(infoFile):
+            self.description = "Cannot load mod: no info file present. Please create one."
+            return
 
-    try:
-      info = ElementTree.parse(infoFile)
-      mod = info.getroot()
+        try:
+            info = ElementTree.parse(infoFile)
+            mod = info.getroot()
 
-      self.name = mod.find("name").text
-      self.description = mod.find("description").text
+            self.name = mod.find("name").text
+            self.description = mod.find("description").text
 
-    except AttributeError as ex:
-      print(ex)
-      self.description = "Cannot load mod: error parsing info file."
+        except AttributeError as ex:
+            print(ex)
+            self.description = "Cannot load mod: error parsing info file."
