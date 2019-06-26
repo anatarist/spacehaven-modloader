@@ -102,4 +102,4 @@ To make life easier, the mod loader does these name lookups automatically in a f
 
 Extracting and annotating game assets also decodes and explodes the game's textures into `library/textures.exploded`. The game's original packed textures are written to `library/textures.exploded/*.png` and the texture regions are written to `library/textures.exploded/*/r*.png`, where the folder name is the texture sheet ID and the filename is the region ID.
 
-Regions definitions can be found in `library/textures` in `<re n="..." />` tags and are used in `library/animations` under the `<assetPos a="..." />` tags.
+Regions definitions can be found in `library/textures` in `<re n="..." />` tags and are used in `library/animations` by the `<assetPos a="..." />` tags.
