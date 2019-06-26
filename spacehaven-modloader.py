@@ -8,7 +8,7 @@ from tkinter import messagebox
 from tkinter import *
 
 import ui.header
-import ui.modDatabase
+import ui.database
 import ui.launcher
 
 import loader.extract
@@ -143,7 +143,7 @@ class Window(Frame):
             self.showMod("(spacehaven not found)", "Please use the Browse button above to locate Spacehaven.")
             return
 
-        self.modDatabase = ui.modDatabase.ModDatabase(self.modPath)
+        self.modDatabase = ui.database.ModDatabase(self.modPath)
 
         for mod in self.modDatabase.mods:
             self.modList.insert(END, mod.name)
