@@ -1,0 +1,63 @@
+<data>
+  <Element>
+    <me _name="Exterior Air Vent" alternateY="false" costGroup="950" ec="1" mid="10001" nonSymmetrical="false" offsetRot="R0">
+      <data>
+        <l eid="1" gridOffX="0" gridOffY="0" layer="0" type="Object">
+          <element id="0" lightValue="None" renderOnFloor="false" userTogglable="false" walkGridCost="255">
+            <definedStates>
+              <l playAnimation="false" state="Standby">
+                <r0 aid="airvent1BExt" flx="false" />
+                <r90 aid="null" flx="false" />
+                <r180 aid="airvent1BExt" flx="false" />
+                <r270 aid="null" flx="false" />
+                <wallMountLight color="084720fe" powerUsage="0.1" skipCenter="false">
+                  <flood brightness="300" distance="3" />
+                </wallMountLight>
+              </l>
+              <l playAnimation="false" state="NoPowerOrError">
+                <r0 aid="airvent1BExt" flx="false" />
+                <r90 aid="null" flx="false" />
+                <r180 aid="airvent1BExt" flx="false" />
+                <r270 aid="null" flx="false" />
+              </l>
+            </definedStates>
+            <features addFacilityIcons="false" inUseState="true" noPressureDmg="false" normalState="true" produceInNormal="false">
+              <stateWatchdog autoproduce="false" />
+              <vent on="true" voff="1">
+                <r0Closed aid="airvent1CFExt" />
+                <r90Closed aid="null" />
+                <additionaFullLitOpen atInuse="true" atNoPower="false" atStandby="true" mirX="0" mirY="0" x="0" y="0">
+                  <r0 aid="ventLight1" flx="true" />
+                  <r90 aid="null" flx="false" />
+                  <r180 aid="ventLight1B" flx="false" />
+                  <r270 aid="null" flx="false" />
+                </additionaFullLitOpen>
+                <additionalFullLitClosed atInuse="true" atNoPower="false" atStandby="true" mirX="0" mirY="0" x="0" y="0">
+                  <r0 aid="ventLight2" flx="true" />
+                  <r90 aid="null" flx="false" />
+                  <r180 aid="ventLight2B" flx="false" />
+                  <r270 aid="null" flx="false" />
+                </additionalFullLitClosed>
+              </vent>
+            </features>
+            <wallMount bothSides="false" type="Lower" />
+          </element>
+        </l>
+      </data>
+      <linked>
+      </linked>
+      <events />
+      <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
+        <name tid="10002" />
+        <desc tid="10003" />
+        <guiIcon aid="airventExtIcon" />
+        <subCat id="1521" />
+        <restrictions>
+          <l gridX="0" gridY="-1" sizeX="1" sizeY="1" type="Floor" />
+          <l gridX="0" gridY="1" sizeX="1" sizeY="1" type="Space" />
+        </restrictions>
+        <difficultyLevel level="1" skill="Construction" />
+      </objectInfo>
+    </me>
+  </Element>
+</data>

@@ -1,0 +1,44 @@
+<AllAnimations>
+  <animations>
+    <ba n="airvent1BExt" f="30" ks="1" id="10006">
+      <bones>
+        <b id="0">
+          <pos>
+            <p f="1" x="0" y="0" sx="1" sy="1" r="0" col="-1"/>
+          </pos>
+        </b>
+      </bones>
+      <items>
+        <assetPos vf="1:1" bi="0" x="0" y="6" sx="-1" sy="1" r="0" a="142"/>
+        <assetPos vf="1:1" bi="0" x="16" y="17" sx="-1" sy="1" r="0" a="743"/>
+        <assetPos vf="1:1" bi="0" x="-14" y="2" sx="-1" sy="1" r="0" a="671"/>
+      </items>
+    </ba>
+    <ba n="airvent1CFExt" f="30" ks="1" id="10007">
+      <bones>
+        <b id="0">
+          <pos>
+            <p f="1" x="0" y="0" sx="-1" sy="1" r="0" col="-1"/>
+          </pos>
+        </b>
+      </bones>
+      <items>
+        <assetPos vf="1:1" bi="0" x="-20" y="-3" sx="1" sy="1" r="0" a="907"/>
+      </items>
+    </ba>
+    <ba n="airventExtIcon" f="30" ks="1" id="10008">
+      <bones>
+        <b id="0">
+          <pos>
+            <p f="1" x="0" y="0" sx="1" sy="1" r="0" col="-1"/>
+          </pos>
+        </b>
+      </bones>
+      <items>
+        <assetPos vf="1:1" bi="0" x="0" y="-12" sx="-1" sy="1" r="0" a="142"/>
+        <assetPos vf="1:1" bi="0" x="16" y="-1" sx="-1" sy="1" r="0" a="743"/>
+        <assetPos vf="1:1" bi="0" x="-14" y="-16" sx="-1" sy="1" r="0" a="671"/>
+      </items>
+    </ba>
+  </animations>
+</AllAnimations>

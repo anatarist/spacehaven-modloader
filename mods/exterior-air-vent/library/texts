@@ -1,0 +1,8 @@
+<t>
+  <exteriorVentName id="10002" pid="145">
+    <EN>Exterior Air Vent</EN>
+  </exteriorVentName>
+  <exteriorVentDesc id="10003" pid="145">
+    <EN>This exterior air vent allows quick atmosphere venting in case of emergency or to maintain hard vacuums (e.g. in industrial areas).</EN>
+  </exteriorVentDesc>
+</t>
