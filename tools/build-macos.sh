@@ -3,7 +3,7 @@
 VERSION=`python3 -c "import version; print(version.version)"`
 
 python3 setup.py build
-python3 setup.py bdist_mac --custom-info-plist Info.plist
+python3 setup.py bdist_mac --custom-info-plist tools/Info.plist
 
 pushd build
 rm spacehaven-modloader-$VERSION.macos.zip

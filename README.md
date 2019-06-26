@@ -9,7 +9,7 @@ It is **not associated with BugByte or Space Haven in any way** other than that 
 
 Download the latest release from [the releases page](https://github.com/anatarist/spacehaven-modloader/releases) and fire it up.
 
-![Screenshot](/screenshot.png?raw=true)
+![Screenshot](/tools/screenshot.png?raw=true)
 
 1. Make sure it found where you installed Space Haven. If it didn't, you'll need to locate it manually via the "Browse..." button in the top right corner.
 
