@@ -18,6 +18,7 @@ setup(
     setup_requires=['py2app==0.19'],
     install_requires=[
         'lxml',
-        'click'
+        'click',
+        'pypng'
     ]
 )
