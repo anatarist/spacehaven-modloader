@@ -7,11 +7,15 @@ import os
 
 import lxml.etree
 
-from PIL import Image
+# HACK: Disable PIL as it doesn't build properly with py2app
+# from PIL import Image
 
 
 def explode(corePath):
     """Decode textures and write them out as individual regions"""
+
+    # HACK: Disable image exploding as pillow doesn't work properly with py2app
+    return
 
     animations = lxml.etree.parse(os.path.join(corePath, "library", "animations"), parser=lxml.etree.XMLParser(recover=True))
     textures = lxml.etree.parse(os.path.join(corePath, "library", "textures"), parser=lxml.etree.XMLParser(recover=True))
