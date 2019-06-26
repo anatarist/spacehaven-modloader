@@ -1,7 +1,10 @@
 
 import os
+import distutils.version
 
 from xml.etree import ElementTree
+
+import version
 
 
 class ModDatabase:
@@ -36,7 +39,8 @@ class Mod:
         infoFile = os.path.join(self.path, "info")
 
         if not os.path.exists(infoFile):
-            self.description = "Cannot load mod: no info file present. Please create one."
+            self.name += " [!]"
+            self.description = "Error loading mod: no info file present. Please create one."
             return
 
         try:
@@ -45,7 +49,13 @@ class Mod:
 
             self.name = mod.find("name").text
             self.description = mod.find("description").text
+            self.minimumLoaderVersion = mod.find("minimumLoaderVersion").text
+
+            if distutils.version.StrictVersion(self.minimumLoaderVersion) > distutils.version.StrictVersion(version.version):
+                self.name += " [!]"
+                self.description = "Error loading mod: mod loader version {} is required.".format(self.minimumLoaderVersion)
 
         except AttributeError as ex:
             print(ex)
-            self.description = "Cannot load mod: error parsing info file."
+            self.name += " [!]"
+            self.description = "Error loading mod: error parsing info file."

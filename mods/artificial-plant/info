@@ -1,4 +1,5 @@
 <mod>
   <name>Artificial Plant</name>
   <description>A simple artificial plant. Provides a small boost to comfort even in otherwise-unpleasant areas.</description>
+  <minimumLoaderVersion>0.0.1</minimumLoaderVersion>
 </mod>
