@@ -7,7 +7,8 @@ import subprocess
 from tkinter import filedialog
 from tkinter import *
 
-import textwrap
+import ui.modDatabase
+import ui.launcher
 
 POSSIBLE_SPACEHAVEN_LOCATIONS = [
   # MacOS
@@ -20,34 +21,13 @@ POSSIBLE_SPACEHAVEN_LOCATIONS = [
   # Linux?
 ]
 
-MOD_DEFINITIONS = [
-  {
-    "name": "Artificial Plant",
-    "description": "Add a bit of cheer to your living spaces"
-  },
-  {
-    "name": "Exterior Air Vent",
-    "description": "Vents and stuff"
-  },
-  {
-    "name": "Greenhouse Rebalance",
-    "description": textwrap.dedent("""\
-      Rebalance plant growth to require more use of the temperature/gas system.
-
-      - Root vegetables need 0C - 20C
-      - Fruits need high light and 25C - 40C
-      - Artificial meat needs 30C - 50C
-      - NEW: Force-grown monster meat, an industrial process, requires 50C - 95C, Base Metals instead of water, and emits hazardous gas when harvested
-    """)
-  }
-]
-
 class Window(Frame):
   def __init__(self, master=None):
     Frame.__init__(self, master)
     self.master = master
 
     self.master.title("Spacehaven Mod Loader")
+    self.master.bind('<FocusIn>', self.focus)
     self.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
     self.spacehavenGameLabel = Label(self, text="Spacehaven Game Location", anchor=NW)
@@ -71,7 +51,7 @@ class Window(Frame):
 
     self.modListFrame = Frame(self.modBrowser)
     self.modList = Listbox(self.modListFrame, height=0)
-    self.modList.bind('<<ListboxSelect>>', self.browseMod)
+    self.modList.bind('<<ListboxSelect>>', self.showCurrentMod)
     self.modList.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
     self.modListOpenFolder = Button(self.modListFrame, text="Open Folder...", command=self.openModFolder)
@@ -97,9 +77,6 @@ class Window(Frame):
     self.launchButton = Button(self, text="Launch Spacehaven!", bg='red')
     self.launchButton.pack(fill=X, padx=4, pady=4)
 
-    self.revertButton = Button(self, text="Revert to vanilla")
-    self.revertButton.pack(fill=X, padx=4, pady=4)
-
     self.revertButton = Button(self, text="Extract & annotate game assets")
     self.revertButton.pack(fill=X, padx=4, pady=4)
 
@@ -119,18 +96,19 @@ class Window(Frame):
     if path is None:
       return
 
-    # MacOS
     if path.endswith('.app'):
-      path = path + '/Contents/Resources/spacehaven.jar'
+      self.gamePath = path
+      self.jarPath = path + '/Contents/Resources/spacehaven.jar'
+      self.modPath = path + '/Contents/Resources/mods'
+
+    elif path.endswith('.jar'):
+      self.gamePath = path
+      self.jarPath = path
+      self.modPath = os.path.join(os.path.dirname(path), "mods")
 
     self.spacehavenText.delete(0, 'end')
-    self.spacehavenText.insert(0, path)
+    self.spacehavenText.insert(0, self.gamePath)
 
-    self.spacehavenModPath = os.path.abspath(os.path.join(path, "../mods"))
-    if not os.path.exists(self.spacehavenModPath):
-      os.mkdir(self.spacehavenModPath)
-
-    self.spacehavenPath = path
     self.refreshModList()
 
   def browseForSpacehaven(self):
@@ -139,49 +117,44 @@ class Window(Frame):
         parent=self.master,
         title="Locate spacehaven",
         filetypes=[
+          ('spacehaven.exe', '*.exe'),
           ('spacehaven.app', '*.app'),
           ('spacehaven.jar', '*.jar'),
         ]
       )
     )
 
+  def focus(self, _arg=None):
+    self.refreshModList()
+
   def refreshModList(self):
     self.modList.delete(0, END)
 
-    if self.spacehavenPath is None:
+    if self.modPath is None:
       self.mods = [{ "name": "(not found)", "description": "Please use the Browse button above to locate Spacehaven." }]
-      self.browseMod()
+      self.showCurrentMod()
       return
 
-    self.mods = []
+    self.modDatabase = ui.modDatabase.ModDatabase(self.modPath)
 
-    for mod in MOD_DEFINITIONS:
-      self.mods.append(mod)
-      self.modList.insert(END, mod["name"])
+    for mod in self.modDatabase.mods:
+      self.modList.insert(END, mod.name)
 
-  def browseMod(self, args=None):
+  def showCurrentMod(self, _arg=None):
     if len(self.modList.curselection()) == 0:
-      mod = self.mods[0]
+      mod = self.modDatabase.mods[0]
     else:
-      mod = self.mods[self.modList.curselection()[0]]
+      mod = self.modDatabase.mods[self.modList.curselection()[0]]
 
-    self.modDetailsName.config(text=mod["name"])
+    self.modDetailsName.config(text=mod.name)
 
     self.modDetailsDescription.config(state="normal")
     self.modDetailsDescription.delete(1.0, END)
-    self.modDetailsDescription.insert(END, mod["description"])
+    self.modDetailsDescription.insert(END, mod.description)
     self.modDetailsDescription.config(state="disabled")
 
   def openModFolder(self):
-    if self.spacehavenModPath is None:
-      return
-
-    if sys.platform == 'win32':
-      os.startfile(self.spacehavenModPath)
-    elif sys.platform == 'darwin':
-      subprocess.call(["open", self.spacehavenModPath])
-    else:
-      subprocess.call(["xdg-open", self.spacehavenModPath])
+    ui.launcher.launch(self.modPath)
 
   def quit(self):
     self.master.destroy()
