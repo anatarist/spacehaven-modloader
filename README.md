@@ -1,4 +1,4 @@
-# Space Haven Modloader
+# Space Haven Mod Loader
 
 This is an unofficial modding tool for [Space Haven by Bug Byte](http://bugbyte.fi/spacehaven/), an early-alpha spaceship colony sim.
 
