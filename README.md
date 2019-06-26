@@ -7,7 +7,7 @@ It is **not associated with BugByte or Space Haven in any way** other than that 
 
 ## Getting Started
 
-Download the latest release from [the releases page](#) and fire it up.
+Download the latest release from [the releases page](https://github.com/anatarist/spacehaven-modloader/releases) and fire it up.
 
 ![Screenshot](/screenshot.png?raw=true)
 
@@ -15,7 +15,7 @@ Download the latest release from [the releases page](#) and fire it up.
 
 2. Click the "Open Folder..." button to open your game's `mods` folder.
 
-3. Download some mods and copy them in. There are a few example mods available from [the releases page](#) or you can find them elsewhere on the internet. When you're done your game folder should look something like this:
+3. Download some mods and copy them in. There are a few example mods available from [the releases page](https://github.com/anatarist/spacehaven-modloader/releases) or you can find them elsewhere on the internet. When you're done your game folder should look something like this:
 
 ```
 spacehaven.jar
