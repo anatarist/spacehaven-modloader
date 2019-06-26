@@ -21,6 +21,8 @@ POSSIBLE_SPACEHAVEN_LOCATIONS = [
     "/Applications/spacehaven.app",
     "/Applications/Games/spacehaven.app",
     "/Applications/Games/Space Haven/spacehaven.app",
+    "./spacehaven.app",
+    "../spacehaven.app",
 
     # Windows
     "../spacehaven/spacehaven.exe",
