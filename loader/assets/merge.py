@@ -23,10 +23,11 @@ def mods(corePath, modPaths):
             modLibraryFilePath = os.path.join(mod, filename.replace('/', os.sep))
             if os.path.exists(modLibraryFilePath):
                 with open(modLibraryFilePath) as f:
-                    modLibrary[filename] = lxml.etree.parse(f)
+                    modLibrary[filename] = lxml.etree.parse(f, parser=lxml.etree.XMLParser(remove_comments=True))
 
         # Do an element-wise merge (replacing conflicts)
         mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/Element", idAttribute="mid")
+        mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/Product", idAttribute="eid")
         mergeDefinitions(coreLibrary, modLibrary, file="library/texts", xpath="/t", idAttribute="id")
         mergeDefinitions(coreLibrary, modLibrary, file="library/animations", xpath="/AllAnimations/animations", idAttribute="id")
 

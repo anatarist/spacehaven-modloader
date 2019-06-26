@@ -49,9 +49,20 @@ Note that because mods are loaded by doing an id-wise merge with the base game l
 - `t`s in `library/texts`
 
 
+### ID Numbers
+
+Most of the items in the game's library are identified by a numeric ID rather than a human-readable name.
+
+If you want to replace an *existing* game definition, like the included Greenhouse mod does, simply copy that definition into to your mod with the same ID number that the game uses. The mod loader will replace the game's definition with the one from your mod.
+
+If you want to create a *new* definition, things get a bit trickier because you need to make sure your ID numbers are unique across all mods that might get loaded. Luckily IDs can be any (positive) 32-bit integer which means there's lots of space.
+
+I recommend prefixing your definition IDs with your Discord user number (e.g. mine is #4511) and a sequential mod number (e.g. I used `00` for the `artificial-plant` example, `01` for `exterior-air-vent`, etc) to come up with something reasonably unique, e.g. `45110200` for the Monster Meat crop recipe in the `greenhouse` example.
+
+
 ### Navigating the Library
 
-Most of the items in the game's library are identified by a numeric ID rather than a human-readable name. This makes it reasonably easy to follow links in a text editor - if one definition references another, simply search for the referenced ID that you're interested in.
+ID numbers are reasonably easy to follow in a text editor - if you find a definition that references another, simply search for the referenced ID that you're interested in.
 
 To find human-readable names, look for a `tid="###"` attribute and search for that ID in `library/texts`. Or, conversely, find the text in `library/texts` and search for the corresponding ID in `library/haven`.
 

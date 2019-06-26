@@ -3,9 +3,8 @@
   <description>A rebalance of crop growth to take advantage of the game's temperature and gas systems.
 
 - Root vegetables require a temperature range of 0C - 20C.
-- Fruits now require a higher light level and a temperature range of 20C - 40C, which means you can't grow them next to root vegetables.
-- Artificial meat now requires a temperature of 50C - 95C, which means you need an area that's isolated from the rest of the ship to grow it.
-- You can now force-grow bug meat as well, which is an industrial process that uses metal instead of water, requires a temperature range of 50C - 95C, and emits hazardous gas. Good for emergencies or deep space voyages. Tip: grow it in a vacuum.
+- Fruits now require a higher light level and a temperature range of 25C - 40C, which means you can't grow them next to root vegetables.
+- Artificial meat now requires a temperature of 50C - 95C and produces hazard gas when harvested, which means you need an area that's isolated from the rest of the ship to grow it.
   </description>
   <minimumLoaderVersion>0.0.1</minimumLoaderVersion>
 </mod>

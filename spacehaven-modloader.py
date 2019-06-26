@@ -191,9 +191,13 @@ class Window(Frame):
         for mod in self.modDatabase.mods:
             activeModPaths.append(mod.path)
 
-        loader.load.load(self.jarPath, activeModPaths)
-        ui.launcher.launchAndWait(self.gamePath)
-        loader.load.unload(self.jarPath)
+        try:
+            loader.load.load(self.jarPath, activeModPaths)
+            ui.launcher.launchAndWait(self.gamePath)
+            loader.load.unload(self.jarPath)
+        except Exception as ex:
+            messagebox.showerror("Error loading mods", str(ex))
+
 
     def quit(self):
         self.master.destroy()

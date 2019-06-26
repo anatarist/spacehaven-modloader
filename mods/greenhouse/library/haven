@@ -65,7 +65,7 @@
         <name tid="422" />
         <GUIAnimation aid="spaceFoodIcon1" />
         <stages>
-            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="1" time="1300">
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="298" oxygenPerMinute="10" stage="1" time="1300">
                 <needs>
                     <l consumeEvery="2" element="16" howMuch="1" />
                 </needs>
@@ -75,7 +75,7 @@
                     </l>
                 </anims>
             </l>
-            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="2" time="1300">
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="298" oxygenPerMinute="10" stage="2" time="1300">
                 <tend penalty="-50" />
                 <anims>
                     <l dir="D1" type="Single" useFlipped="true">
@@ -83,7 +83,7 @@
                     </l>
                 </anims>
             </l>
-            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="3" time="1300">
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="298" oxygenPerMinute="10" stage="3" time="1300">
                 <needs>
                     <l consumeEvery="2" element="16" howMuch="1" />
                 </needs>
@@ -93,7 +93,7 @@
                     </l>
                 </anims>
             </l>
-            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="4" time="1300">
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="298" oxygenPerMinute="10" stage="4" time="1300">
                 <tend penalty="-50" />
                 <anims>
                     <l dir="D1" type="Single" useFlipped="true">
@@ -101,7 +101,7 @@
                     </l>
                 </anims>
             </l>
-            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="293" oxygenPerMinute="10" stage="5" time="1">
+            <l co2PerMinute="3" lightNeeded="High" maxTemp="313" minTemp="298" oxygenPerMinute="10" stage="5" time="1">
                 <harvestable>
                     <products>
                         <l element="706" howMuch="2" produceEvery="1" />
@@ -120,7 +120,7 @@
         <desc tid="424" />
     </product>
 
-    <!-- Artificial Meat: Needs 50C - 95C -->
+    <!-- Artificial Meat: Needs 50C - 95C, releases hazard gas when harvested -->
     <product _name="Artificial meat" eid="705" type="Crop">
         <name tid="423" />
         <GUIAnimation aid="spaceFoodIcon1" />
@@ -166,6 +166,7 @@
                     <products>
                         <l element="707" howMuch="1" produceEvery="1" />
                         <l element="71" howMuch="0" produceEvery="1" />
+                        <l element="971" howMuch="50" produceEvery="1" />
                     </products>
                 </harvestable>
                 <anims>
@@ -180,7 +181,8 @@
         <desc tid="425" />
     </product>
 
-    <!-- NEW: Force-grown bug meat: An industrial process. Requires a temperature of 50C to 95C, emits hazardous gas, and requires metals rather than water to grow -->
+    <!-- NEW: Force-grown monster meat: An industrial process. Requires a temperature of 50C to 95C, emits hazardous gas, and requires metals rather than water to grow -->
+    <!--
     <product _name="Monster Meat" eid="45110200" type="Crop">
       <name tid="488" />
       <GUIAnimation aid="spaceFoodIcon1" />
@@ -257,5 +259,6 @@
       <difficulty level="2" skill="Farming" />
       <desc tid="489" />
     </product>
-  </Element>
+    -->
+  </Product>
 </data>
