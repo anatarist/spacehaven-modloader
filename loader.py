@@ -1,9 +1,24 @@
 #!/usr/bin/env python3
 
+import os
+import sys
+import subprocess
+
 from tkinter import filedialog
 from tkinter import *
 
 import textwrap
+
+POSSIBLE_SPACEHAVEN_LOCATIONS = [
+  # MacOS
+  "/Applications/spacehaven.app",
+  "/Applications/Games/spacehaven.app",
+  "/Applications/Games/Space Haven/spacehaven.app"
+
+  # Windows?
+
+  # Linux?
+]
 
 MOD_DEFINITIONS = [
   {
@@ -35,17 +50,17 @@ class Window(Frame):
     self.master.title("Spacehaven Mod Loader")
     self.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-    self.spacehavenJarLabel = Label(self, text="Spacehaven Game Location", anchor=NW)
-    self.spacehavenJarLabel.pack(fill=X, padx=4, pady=4)
+    self.spacehavenGameLabel = Label(self, text="Spacehaven Game Location", anchor=NW)
+    self.spacehavenGameLabel.pack(fill=X, padx=4, pady=4)
 
-    self.jarPicker = Frame(self)
-    self.spacehavenJarBrowse = Button(self.jarPicker, text="Browse...", command=self.browseJar)
-    self.spacehavenJarBrowse.pack(side=RIGHT, padx=4, pady=4)
+    self.spacehavenPicker = Frame(self)
+    self.spacehavenBrowse = Button(self.spacehavenPicker, text="Browse...", command=self.browseForSpacehaven)
+    self.spacehavenBrowse.pack(side=RIGHT, padx=4, pady=4)
 
-    self.spacehavenJarText = Entry(self.jarPicker)
-    self.spacehavenJarText.pack(fill=X, padx=4, pady=4)
+    self.spacehavenText = Entry(self.spacehavenPicker)
+    self.spacehavenText.pack(fill=X, padx=4, pady=4)
 
-    self.jarPicker.pack(fill=X, padx=0, pady=0)
+    self.spacehavenPicker.pack(fill=X, padx=0, pady=0)
 
     Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
@@ -59,7 +74,7 @@ class Window(Frame):
     self.modList.bind('<<ListboxSelect>>', self.browseMod)
     self.modList.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-    self.modListOpenFolder = Button(self.modListFrame, text="Browse...")
+    self.modListOpenFolder = Button(self.modListFrame, text="Open Folder...", command=self.openModFolder)
     self.modListOpenFolder.pack(fill=X, padx=4, pady=4)
 
     self.modListFrame.pack(side=LEFT, fill=Y, expand=1, padx=4, pady=4)
@@ -82,36 +97,64 @@ class Window(Frame):
     self.launchButton = Button(self, text="Launch Spacehaven!")
     self.launchButton.pack(fill=X, padx=4, pady=4)
 
-    self.refreshModList()
+    self.autolocateSpacehaven()
 
-  def browseJar(self):
-    path = filedialog.askopenfilename(
-      parent=self.master,
-      title="Locate spacehaven",
-      filetypes=[
-        ('spacehaven.app', '*.app'),
-        ('spacehaven.jar', '*.jar'),
-      ]
-    )
+  def autolocateSpacehaven(self):
+    self.spacehavenPath = None
+    for location in POSSIBLE_SPACEHAVEN_LOCATIONS:
+      if os.path.exists(location):
+        self.locateSpacehaven(location)
+        return
 
+  def locateSpacehaven(self, path):
     if path is None:
       return
 
+    # MacOS
     if path.endswith('.app'):
       path = path + '/Contents/Resources/spacehaven.jar'
 
-    self.spacehavenJarText.delete(0, 'end')
-    self.spacehavenJarText.insert(0, path)
+    self.spacehavenText.delete(0, 'end')
+    self.spacehavenText.insert(0, path)
+
+    self.spacehavenModPath = os.path.abspath(os.path.join(path, "../mods"))
+    if not os.path.exists(self.spacehavenModPath):
+      os.mkdir(self.spacehavenModPath)
+
+    self.spacehavenPath = path
+    self.refreshModList()
+
+  def browseForSpacehaven(self):
+    self.locateSpacehaven(
+      filedialog.askopenfilename(
+        parent=self.master,
+        title="Locate spacehaven",
+        filetypes=[
+          ('spacehaven.app', '*.app'),
+          ('spacehaven.jar', '*.jar'),
+        ]
+      )
+    )
 
   def refreshModList(self):
+    self.modList.delete(0, END)
+
+    if self.spacehavenPath is None:
+      self.mods = [{ "name": "(not found)", "description": "Please use the Browse button above to locate Spacehaven." }]
+      self.browseMod()
+      return
+
     self.mods = []
 
     for mod in MOD_DEFINITIONS:
       self.mods.append(mod)
       self.modList.insert(END, mod["name"])
 
-  def browseMod(self, args):
-    mod = self.mods[self.modList.curselection()[0]]
+  def browseMod(self, args=None):
+    if len(self.modList.curselection()) == 0:
+      mod = self.mods[0]
+    else:
+      mod = self.mods[self.modList.curselection()[0]]
 
     self.modDetailsName.config(text=mod["name"])
 
@@ -119,6 +162,18 @@ class Window(Frame):
     self.modDetailsDescription.delete(1.0, END)
     self.modDetailsDescription.insert(END, mod["description"])
     self.modDetailsDescription.config(state="disabled")
+
+  def openModFolder(self):
+    if self.spacehavenModPath is None:
+      return
+
+    if sys.platform == 'win32':
+      os.startfile(self.spacehavenModPath)
+    elif sys.platform == 'darwin':
+      subprocess.call(["open", self.spacehavenModPath])
+    else:
+      subprocess.call(["xdg-open", self.spacehavenModPath])
+
 
 if __name__ == "__main__":
   root = Tk()
