@@ -7,8 +7,10 @@ from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import *
 
+import ui.header
 import ui.modDatabase
 import ui.launcher
+
 import loader.extract
 import loader.load
 
@@ -29,11 +31,16 @@ class Window(Frame):
         Frame.__init__(self, master)
         self.master = master
 
-        self.master.title("Spacehaven Mod Loader")
+        self.master.title("Space Haven Mod Loader")
         self.master.bind('<FocusIn>', self.focus)
+
+        self.headerImage = PhotoImage(data=ui.header.image, width=1680, height=30)
+        self.header = Label(self.master, bg='black', image=self.headerImage)
+        self.header.pack(fill=X, padx=0, pady=0)
+
         self.pack(fill=BOTH, expand=1, padx=4, pady=4)
 
-        self.spacehavenGameLabel = Label(self, text="Spacehaven Game Location", anchor=NW)
+        self.spacehavenGameLabel = Label(self, text="Game Location", anchor=NW)
         self.spacehavenGameLabel.pack(fill=X, padx=4, pady=4)
 
         self.spacehavenPicker = Frame(self)
@@ -47,7 +54,8 @@ class Window(Frame):
 
         Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
-        self.modLabel = Label(self, text="Downloaded mods", anchor=NW)
+
+        self.modLabel = Label(self, text="Installed mods", anchor=NW)
         self.modLabel.pack(fill=X, padx=4, pady=4)
 
         self.modBrowser = Frame(self)
@@ -190,11 +198,11 @@ class Window(Frame):
 
 if __name__ == "__main__":
     root = Tk()
-    root.geometry("600x600")
+    root.geometry("600x590")
 
     # HACK: Button labels don't appear until the window is resized with py2app
     def fixNoButtonLabelsBug():
-        root.geometry("600x610")
+        root.geometry("600x600")
 
     app = Window(root)
     root.update()
