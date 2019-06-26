@@ -6,16 +6,14 @@ import click
 from zipfile import ZipFile
 
 
-def extract(jarPath, modPath):
-  coreDefsPath = os.path.join(modPath, "spacehaven")
-
-  if not os.path.exists(coreDefsPath):
-    os.mkdir(coreDefsPath)
+def extract(jarPath, corePath):
+  if not os.path.exists(corePath):
+    os.mkdir(corePath)
 
   with ZipFile(jarPath, "r") as spacehaven:
     for file in set(spacehaven.namelist()):
       if file.startswith("library/") and not file.endswith("/"):
-        spacehaven.extract(file, coreDefsPath)
+        spacehaven.extract(file, corePath)
 
 
 def patch(files):

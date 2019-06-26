@@ -159,6 +159,9 @@ class Window(Frame):
     ui.launcher.launch(self.modPath)
 
   def extractAndAnnotate(self):
+    if not messagebox.askokcancel("Extract & Annotate", "Extracting and annotating game assets will take a minute or two.\n\nWould you like to proceed?"):
+      return
+
     loader.extract.extract(self.jarPath, self.modPath)
     ui.launcher.launch(os.path.join(self.modPath, 'spacehaven'))
 
