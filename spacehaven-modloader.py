@@ -5,10 +5,12 @@ import sys
 import subprocess
 
 from tkinter import filedialog
+from tkinter import messagebox
 from tkinter import *
 
 import ui.modDatabase
 import ui.launcher
+import loader.extract
 
 POSSIBLE_SPACEHAVEN_LOCATIONS = [
   # MacOS
@@ -74,11 +76,11 @@ class Window(Frame):
 
     Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
-    self.launchButton = Button(self, text="Launch Spacehaven!", bg='red')
+    self.launchButton = Button(self, text="Launch Spacehaven!", command=self.patchAndLaunch)
     self.launchButton.pack(fill=X, padx=4, pady=4)
 
-    self.revertButton = Button(self, text="Extract & annotate game assets")
-    self.revertButton.pack(fill=X, padx=4, pady=4)
+    self.extractButton = Button(self, text="Extract & annotate game assets", command=self.extractAndAnnotate)
+    self.extractButton.pack(fill=X, padx=4, pady=4)
 
     self.quitButton = Button(self, text="Quit", command=self.quit)
     self.quitButton.pack(fill=X, padx=4, pady=4)
@@ -155,6 +157,13 @@ class Window(Frame):
 
   def openModFolder(self):
     ui.launcher.launch(self.modPath)
+
+  def extractAndAnnotate(self):
+    loader.extract.extract(self.jarPath, self.modPath)
+    ui.launcher.launch(os.path.join(self.modPath, 'spacehaven'))
+
+  def patchAndLaunch(self):
+    pass
 
   def quit(self):
     self.master.destroy()

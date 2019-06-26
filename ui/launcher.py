@@ -1,5 +1,11 @@
 
+import sys
+import subprocess
+
+
 def launch(path):
+  """Open a path in an OS-native way"""
+
   if path is None:
     return
 

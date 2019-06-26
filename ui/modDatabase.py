@@ -3,7 +3,28 @@ import os
 
 from xml.etree import ElementTree
 
+
+class ModDatabase:
+  """Information about a collection of mods"""
+
+  def __init__(self, path):
+    self.path = path
+    self.locateMods()
+
+  def locateMods(self):
+    self.mods = []
+
+    for modFolder in os.listdir(self.path):
+      if modFolder == 'spacehaven':
+        continue # don't need to load core game definitions
+
+      self.mods.append(Mod(os.path.join(self.path, modFolder)))
+
+    self.mods.sort(key=lambda mod: mod.name)
+
 class Mod:
+  """Details about a specific mod (name, description)"""
+
   def __init__(self, path):
     self.path = path
     self.name = os.path.basename(self.path)
@@ -27,19 +48,3 @@ class Mod:
     except AttributeError as ex:
       print(ex)
       self.description = "Cannot load mod: error parsing info file."
-
-class ModDatabase:
-  def __init__(self, path):
-    self.path = path
-    self.locateMods()
-
-  def locateMods(self):
-    self.mods = []
-
-    for modFolder in os.listdir(self.path):
-      if modFolder == 'spacehaven':
-        continue # don't need to load core game definitions
-
-      self.mods.append(Mod(os.path.join(self.path, modFolder)))
-
-    self.mods.sort(key=lambda mod: mod.name)
