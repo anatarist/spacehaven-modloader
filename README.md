@@ -9,6 +9,8 @@ It is **not associated with BugByte or Space Haven in any way** other than that 
 
 Download the latest release from [the releases page](#) and fire it up.
 
+![Screenshot](/screenshot.png?raw=true)
+
 1. Make sure it found where you installed Space Haven. If it didn't, you'll need to locate it manually via the "Browse..." button in the top right corner.
 
 2. Click the "Open Folder..." button to open your game's `mods` folder.
