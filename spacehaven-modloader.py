@@ -145,13 +145,15 @@ class Window(Frame):
     def showCurrentMod(self, _arg=None):
         if len(self.modDatabase.mods) == 0:
             self.showMod("(no mods found)", "Please install some mods into your mods folder.")
+            return
 
-        elif len(self.modList.curselection()) == 0:
-            self.showMod("(none)", "Please select a mod from the list")
+        if len(self.modList.curselection()) == 0:
+            mod = self.modDatabase.mods[0]
 
         else:
             mod = self.modDatabase.mods[self.modList.curselection()[0]]
-            self.showMod(mod.name, mod.description)
+
+        self.showMod(mod.name, mod.description)
 
     def showMod(self, name, description):
         self.modDetailsName.config(text=name)
