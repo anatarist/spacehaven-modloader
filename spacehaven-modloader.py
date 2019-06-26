@@ -2,7 +2,6 @@
 
 import os
 import subprocess
-import pkg_resources
 
 from tkinter import filedialog
 from tkinter import messagebox
