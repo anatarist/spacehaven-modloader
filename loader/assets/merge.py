@@ -28,6 +28,8 @@ def mods(corePath, modPaths):
         # Do an element-wise merge (replacing conflicts)
         mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/Element", idAttribute="mid")
         mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/Product", idAttribute="eid")
+        mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/ObjectiveCollection", idAttribute="nid")
+        mergeDefinitions(coreLibrary, modLibrary, file="library/haven", xpath="/data/Notes", idAttribute="id")
         mergeDefinitions(coreLibrary, modLibrary, file="library/texts", xpath="/t", idAttribute="id")
         mergeDefinitions(coreLibrary, modLibrary, file="library/animations", xpath="/AllAnimations/animations", idAttribute="id")
 
