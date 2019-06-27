@@ -1,0 +1,181 @@
+<data>
+    <Element>
+        <!-- X1 Chair: adjust walkGridCost to 100 -->
+        <me _name="X1 Chair" alternateY="false" costGroup="869" ec="3" mid="90" nonSymmetrical="false" offsetRot="R0">
+            <data>
+                <l eid="2" gridOffX="0" gridOffY="0" layer="0" type="Object">
+                    <element id="0" lightValue="Low" renderOnFloor="false" userTogglable="false" walkGridCost="100">
+                        <definedStates>
+                            <l playAnimation="false" state="Standby">
+                                <r0 aid="chair2F" flx="false" />
+                                <r90 aid="null" flx="false" />
+                                <r180 aid="chair2BB" flx="false" />
+                                <r270 aid="null" flx="false" />
+                                <tasks>
+                                    <l dir="D3" gridOffX="0" gridOffY="0" setStateInUse="false" task="Sit" usage="Both">
+                                        <r0offset charOffX="-1" charOffY="-5" />
+                                        <r180offset charOffX="1" charOffY="-1" />
+                                        <r180InFront x="0" y="0">
+                                            <front aid="chair2BF" />
+                                        </r180InFront>
+                                    </l>
+                                </tasks>
+                            </l>
+                        </definedStates>
+                        <features addFacilityIcons="false" inUseState="true" noPressureDmg="false" normalState="true" produceInNormal="false">
+                            <rest accessAllTiles="true" isBed="false" isMedical="false" isSitRest="true" restValue="10" useAllTask="false" />
+                        </features>
+                    </element>
+                </l>
+            </data>
+            <linked />
+            <events />
+            <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
+                <name tid="143" />
+                <desc tid="144" />
+                <guiIcon aid="build_icon_90" />
+                <subCat id="1506" />
+                <difficultyLevel level="2" skill="Construction" />
+            </objectInfo>
+        </me>
+
+        <!-- X1 Couch: remove empty-floor-tile restrictions -->
+        <me _name="X1 Couch" alternateY="false" costGroup="0" ec="10" mid="319" nonSymmetrical="false" offsetRot="R0">
+            <data />
+            <linked>
+                <l eid="5" gridOffX="1" gridOffY="0" group="0" id="908" layer="0" rot="R90" />
+                <l eid="6" gridOffX="0" gridOffY="1" group="0" id="908" layer="0" rot="R0" />
+                <l eid="9" gridOffX="1" gridOffY="1" group="0" id="309" layer="0" rot="R0" />
+                <l eid="10" gridOffX="1" gridOffY="1" group="0" id="898" layer="0" rot="R0" />
+            </linked>
+            <events />
+            <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
+                <name tid="895" />
+                <desc tid="896" />
+                <guiIcon aid="build_icon_319" />
+                <subCat id="1506" />
+                <restrictions>
+                </restrictions>
+                <difficultyLevel level="1" skill="Construction" />
+            </objectInfo>
+        </me>
+
+        <me _name="X1 Couch" alternateY="false" costGroup="0" ec="11" mid="1235" nonSymmetrical="false" offsetRot="R0">
+            <data />
+            <linked>
+                <l eid="5" gridOffX="1" gridOffY="1" group="0" id="908" layer="0" rot="R90" />
+                <l eid="6" gridOffX="0" gridOffY="2" group="0" id="908" layer="0" rot="R0" />
+                <l eid="9" gridOffX="1" gridOffY="2" group="0" id="309" layer="0" rot="R0" />
+                <l eid="10" gridOffX="1" gridOffY="2" group="0" id="898" layer="0" rot="R90" />
+                <l eid="11" gridOffX="1" gridOffY="0" group="0" id="908" layer="0" rot="R90" />
+            </linked>
+            <events />
+            <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
+                <name tid="895" />
+                <desc tid="896" />
+                <guiIcon aid="build_icon_1235" />
+                <subCat id="1506" />
+                <restrictions>
+                </restrictions>
+                <difficultyLevel level="1" skill="Construction" />
+            </objectInfo>
+        </me>
+
+        <!-- X1 Couch: add a mirrored variant of the 2x3 couch -->
+        <me _name="X1 Couch" alternateY="false" costGroup="0" ec="11" mid="451104000" nonSymmetrical="false" offsetRot="R0">
+            <data />
+            <linked>
+                <l eid="5" gridOffX="1" gridOffY="1" group="0" id="908" layer="0" rot="R90" />
+                <l eid="11" gridOffX="-1" gridOffY="2" group="0" id="908" layer="0" rot="R0" />
+                <l eid="6" gridOffX="0" gridOffY="2" group="0" id="908" layer="0" rot="R0" />
+                <l eid="9" gridOffX="1" gridOffY="2" group="0" id="309" layer="0" rot="R0" />
+                <l eid="10" gridOffX="1" gridOffY="2" group="0" id="898" layer="0" rot="R90" />
+            </linked>
+            <events />
+            <objectInfo buildInstant="false" debugOnly="false" disableAirlockTest="false" disableBuildTest="false" disableRotation="false" viewMode="Normal">
+                <name tid="895" />
+                <desc tid="896" />
+                <guiIcon aid="build_icon_1235F" />
+                <subCat id="1506" />
+                <restrictions>
+                </restrictions>
+                <difficultyLevel level="1" skill="Construction" />
+            </objectInfo>
+        </me>
+
+        <!-- X1 Couch: components: adjust walkGridCost to 100 -->
+        <me alternateY="false" costGroup="869" ec="4" mid="908" nonSymmetrical="false" offsetRot="R0">
+            <data>
+                <l eid="2" gridOffX="0" gridOffY="0" layer="0" type="Object">
+                    <element id="0" lightValue="Medium" renderOnFloor="false" userTogglable="false" walkGridCost="100">
+                        <definedStates>
+                            <l playAnimation="false" state="Standby">
+                                <r0 aid="couch1F" flx="false" />
+                                <r90 aid="null" flx="false" />
+                                <r180 aid="couch1B" flx="false" />
+                                <r270 aid="null" flx="false" />
+                                <tasks>
+                                    <l dir="D3" gridOffX="0" gridOffY="0" setStateInUse="false" task="Sit" usage="Both">
+                                        <r0offset charOffX="0" charOffY="-6" />
+                                        <r180offset charOffX="4" charOffY="-2" />
+                                        <r180InFront x="0" y="0">
+                                            <front aid="couch1B" />
+                                        </r180InFront>
+                                    </l>
+                                </tasks>
+                            </l>
+                        </definedStates>
+                        <features addFacilityIcons="false" inUseState="true" noPressureDmg="false" normalState="true" produceInNormal="false">
+                            <rest accessAllTiles="true" isBed="false" isMedical="false" isSitRest="true" restValue="10" useAllTask="false" />
+                        </features>
+                        <commonPower />
+                    </element>
+                </l>
+            </data>
+            <linked />
+            <events />
+        </me>
+
+        <me alternateY="false" costGroup="869" ec="4" mid="309" nonSymmetrical="false" offsetRot="R0">
+            <data>
+                <l eid="2" gridOffX="0" gridOffY="0" layer="0" type="Object">
+                    <element id="0" lightValue="Medium" renderOnFloor="false" userTogglable="false" walkGridCost="100">
+                        <definedStates>
+                            <l playAnimation="false" state="Standby">
+                                <r0 aid="couch1C8" flx="false" />
+                                <r90 aid="couch1C6" flx="false" />
+                                <r180 aid="couch1C2" flx="false" />
+                                <r270 aid="couch1C4" flx="false" />
+                                <tasks>
+                                    <l dir="D3" gridOffX="0" gridOffY="0" setStateInUse="false" task="Sit" usage="Both">
+                                        <r0offset charOffX="-12" charOffY="-9" />
+                                        <r180offset charOffX="4" charOffY="-2" />
+                                        <r90offset charOffX="-16" charOffY="2" />
+                                        <r270offset charOffX="15" charOffY="-5" />
+                                        <r180InFront x="0" y="0">
+                                            <front aid="couch1C2" />
+                                        </r180InFront>
+                                        <r270InFront x="0" y="0">
+                                            <front aid="empty" />
+                                        </r270InFront>
+                                    </l>
+                                </tasks>
+                            </l>
+                        </definedStates>
+                        <additionaFullLit atInuse="true" atNoPower="false" atStandby="true" mirX="0" mirY="0" x="0" y="0">
+                            <r0 aid="couchLight1Fc2" flx="false" />
+                            <r90 aid="couchLightc6" flx="false" />
+                            <r180 aid="couchLight1Bc8" flx="false" />
+                            <r270 aid="couchLightc4" flx="false" />
+                        </additionaFullLit>
+                        <features addFacilityIcons="false" inUseState="true" noPressureDmg="false" normalState="true" produceInNormal="false">
+                            <rest accessAllTiles="true" isBed="false" isMedical="false" isSitRest="true" restValue="10" useAllTask="false" />
+                        </features>
+                    </element>
+                </l>
+            </data>
+            <linked />
+            <events />
+        </me>
+    </Element>
+</data>

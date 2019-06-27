@@ -1,0 +1,16 @@
+<AllAnimations>
+    <animations>
+        <ba n="build_icon_1235F" f="30" ks="1" id="451104001">
+            <bones>
+                <b id="0">
+                    <pos>
+                        <p f="1" x="0" y="0" sx="-1" sy="1" r="0" col="-1"/>
+                    </pos>
+                </b>
+            </bones>
+            <items>
+                <assetPos vf="1:1" bi="0" x="0" y="0" sx="1" sy="1" r="0" a="1706"/>
+            </items>
+        </ba>
+    </animations>
+</AllAnimations>

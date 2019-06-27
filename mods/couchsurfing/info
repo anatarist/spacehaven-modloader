@@ -1,0 +1,8 @@
+<mod>
+  <name>Couchsurfing</name>
+  <description>Relaxes restrictions on couches and chairs.
+- Characters can now squeeze past couches and chairs, although with a movement penalty, so you can place them in more crowded spaces.
+- Couches no longer require free space on each end so you can make Us and other shapes.
+- Adds a flipped variant of the 1x2 couch.</description>
+  <minimumLoaderVersion>0.0.1</minimumLoaderVersion>
+</mod>
