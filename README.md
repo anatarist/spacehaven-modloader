@@ -2,7 +2,7 @@
 
 This is an unofficial modding tool for [Space Haven by Bug Byte](http://bugbyte.fi/spacehaven/), an early-alpha spaceship colony sim.
 
-It is **not associated with BugByte or Space Haven in any way** other than that it makes some modding possible for the game. This tool is intended as a sneak peek at what modding might be able to do, and in the future it will be replaced by BugByte's official mod support.
+It is **not associated with BugByte or Space Haven in any way** other than that it makes some modding possible for the game. This tool is intended to be a sneak peek at what modding might be able to do, and in the future it will be replaced by official mod support.
 
 
 ## Getting Started
@@ -20,6 +20,7 @@ Download the latest release from [the releases page](https://github.com/anataris
 ```
 spacehaven.jar
 savegames/
+  ...
 mods/
   artificial-plant/
     info
@@ -32,14 +33,14 @@ mods/
 
 4. Go back to the mod loader and make sure the mods you installed appear in the list. If they don't then you might not have installed them properly. Double check the folder structure.
 
-5. When you're ready click "Launch Spacehaven!" to play with mods. The mod loader will load the mods into the game, launch the game, and then unload them again when you quit.
+5. When you're ready click "Launch Spacehaven!" to play with mods. The mod loader will load the mods into the game, launch the game, and then unload them again when the game exits.
 
 
 ## Modding Guide
 
-Mods are stored as a series of XML files in the same format as the game's library.
+Mods are stored as a series of XML files in roughly the same format as the game's library.
 
-You can take a look at the library by clicking the "Extract & annotate game assets" button. That will extract the game library from `spacehaven.jar` into `mods/spacehaven/` so you can take a look.
+You can take a look at the library by clicking the "Extract & annotate game assets" button. That will extract the game library from `spacehaven.jar` into `mods/spacehaven/` and open the folder.
 
 The main file of interest is `library/haven.annotated`, which is an annotated copy of `library/haven`, which is the main game library. It contains definitions for most of the things in the game (buildings, items, ships, characters, objectives, generation parameters, etc). Also of interest are `library/texts`, `library/animations`, and `library/textures`.
 
@@ -59,12 +60,12 @@ If you want to replace an *existing* game definition, like the included Greenhou
 
 If you want to create a *new* definition, things get a bit trickier because you need to make sure your ID numbers are unique across all mods that might get loaded. Luckily IDs can be any (positive) 32-bit integer which means there's lots of space.
 
-I recommend prefixing your definition IDs with your Discord user number (e.g. mine is #4511) and a sequential mod number (e.g. I used `00` for the `artificial-plant` example, `01` for `exterior-air-vent`, etc) to come up with something reasonably unique, e.g. `45110200` for the Monster Meat crop recipe in the `greenhouse` example.
+I recommend prefixing your definition IDs with your Discord user number (e.g. mine is #4511) and a sequential mod number (e.g. I used `00` for the `artificial-plant` example, `01` for `exterior-air-vent`, etc) to come up with something reasonably unique, e.g. `451102000` for the Monster Meat crop recipe in the `greenhouse` example (and then `451102001` for the next ID in that mod, `451102002` for the one after that, etc etc).
 
 
 ### Navigating the Library
 
-ID numbers are reasonably easy to follow in a text editor - if you find a definition that references another, simply search for the referenced ID that you're interested in.
+Since ID numbers are unique they're reasonably easy to follow in a text editor - if you find a definition that references another, simply search for the referenced ID that you're interested in.
 
 To find human-readable names, look for a `tid="###"` attribute and search for that ID in `library/texts`. Or, conversely, find the text in `library/texts` and search for the corresponding ID in `library/haven`.
 
@@ -108,11 +109,12 @@ and looking up the `<name tid="869" />` we see the category is named:
     </lifesupport>
 ```
 
-To make life easier, the mod loader does these name lookups automatically in a few places and stores the results in `_name=""` attributes on various tags. This annotated version of the library is saved to `library/haven.annotated` and is (accordingly) a bit easier to navigate.
+To make life easier, the mod loader does these name lookups automatically in a few places and stores the results in `_name=""` attributes. This annotated version of the library is saved to `library/haven.annotated` and is (accordingly) a bit easier to navigate.
 
 
 ### Textures and Animations
 
-Extracting and annotating game assets also decodes and explodes the game's textures into `library/textures.exploded`. The game's original packed textures are written to `library/textures.exploded/*.png` and the texture regions are written to `library/textures.exploded/*/r*.png`, where the folder name is the texture sheet ID and the filename is the region ID.
+Extracting and annotating game assets also decodes and explodes the game's textures into `library/textures.exploded`. The game's original packed textures are written to `library/textures.exploded/*.png` and the texture regions are written to `library/textures.exploded/*/*.png`, where the folder name is the texture ID and the filename is the region ID.
 
 Regions definitions can be found in `library/textures` in `<re n="..." />` tags and are used in `library/animations` by the `<assetPos a="..." />` tags.
+
