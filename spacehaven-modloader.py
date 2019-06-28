@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+import traceback
 
 from tkinter import filedialog
 from tkinter import messagebox
@@ -234,9 +235,21 @@ class Window(Frame):
     def quit(self):
         self.master.destroy()
 
+
+def handleException(type, value, trace):
+    message = "".join(traceback.format_exception(type, value, trace))
+
+    ui.log.log("!! Exception !!")
+    ui.log.log(message)
+
+    messagebox.showerror("Error", "Sorry, something went wrong!\n\n"
+                                  "Please open an issue at https://github.com/anatarist/spacehaven-modloader and attach logs.txt from your mods/ folder.")
+
+
 if __name__ == "__main__":
     root = Tk()
     root.geometry("890x639")
+    root.report_callback_exception = handleException
 
     # HACK: Button labels don't appear until the window is resized with py2app
     def fixNoButtonLabelsBug():
