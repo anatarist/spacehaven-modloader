@@ -90,7 +90,7 @@ class Window(Frame):
 
         Frame(self, height=1, bg="grey").pack(fill=X, padx=4, pady=8)
 
-        self.launchButton = Button(self, text="Launch Spacehaven!", command=self.patchAndLaunch)
+        self.launchButton = Button(self, text="Launch Space Haven!", command=self.patchAndLaunch)
         self.launchButton.pack(fill=X, padx=4, pady=4)
 
         self.extractButton = Button(self, text="Extract & annotate game assets", command=self.extractAndAnnotate)
@@ -125,12 +125,12 @@ class Window(Frame):
             self.gamePath = path
             self.jarPath = path
             self.modPath = os.path.join(os.path.dirname(path), "mods")
-           
+
         elif path.endswith('.exe'):
             self.gamePath = path
             self.jarPath = os.path.join(os.path.dirname(path), "spacehaven.jar")
             self.modPath = os.path.join(os.path.dirname(path), "mods")
-        
+
         if not os.path.exists(self.modPath):
             os.mkdir(self.modPath)
 
