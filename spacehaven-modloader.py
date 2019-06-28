@@ -142,6 +142,8 @@ class Window(Frame):
         ui.log.log("  modPath: {}".format(self.modPath))
         ui.log.log("  jarPath: {}".format(self.jarPath))
 
+        self.gameInfo = ui.gameinfo.GameInfo(self.jarPath)
+
         self.spacehavenText.delete(0, 'end')
         self.spacehavenText.insert(0, self.gamePath)
 
@@ -178,7 +180,7 @@ class Window(Frame):
             self.showMod("Spacehaven not found", "Please use the Browse button above to locate Spacehaven.")
             return
 
-        self.modDatabase = ui.database.ModDatabase(self.modPath)
+        self.modDatabase = ui.database.ModDatabase(self.modPath, self.gameInfo)
 
         for mod in self.modDatabase.mods:
             self.modList.insert(END, mod.name)
