@@ -43,14 +43,14 @@ def mods(corePath, modPaths):
 
 def mergeDefinitions(baseLibrary, modLibrary, file, xpath, idAttribute):
     if not file in modLibrary:
-        ui.log.log("  {}: Not present".format(file))
+        ui.log.log("    {}: Not present".format(file))
         return
 
     try:
         baseRoot = baseLibrary[file].xpath(xpath)[0]
         modRoot = modLibrary[file].xpath(xpath)[0]
     except IndexError:
-        ui.log.log("  {}: Nothing at {}".format(file, xpath))
+        ui.log.log("    {}: Nothing at {}".format(file, xpath))
         return
 
     for element in list(modRoot):
