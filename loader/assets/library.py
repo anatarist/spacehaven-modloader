@@ -5,6 +5,8 @@ import click
 
 from zipfile import ZipFile
 
+import ui.log
+
 PATCHABLE_FILES = [
     'library/haven',
     'library/texts',
@@ -18,9 +20,11 @@ def extract(jarPath, corePath):
     if not os.path.exists(corePath):
         os.mkdir(corePath)
 
+    ui.log.log("  Extracting library from {} to {}...".format(jarPath, corePath))
     with ZipFile(jarPath, "r") as spacehaven:
         for file in set(spacehaven.namelist()):
             if file.startswith("library/") and not file.endswith("/"):
+                ui.log.log("    {}".format(file))
                 spacehaven.extract(file, corePath)
 
 

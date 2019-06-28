@@ -3,6 +3,8 @@ import os
 from xml.etree import ElementTree
 from lxml.etree import XMLParser
 
+import ui.log
+
 
 def annotate(corePath):
     """Generate an annotated Space Haven library"""
@@ -73,5 +75,6 @@ def annotate(corePath):
             for process in list.find("processes"):
                 process.set("_name", elementNames[process.get("process")])
 
-    haven.write(os.path.join(corePath, "library", "haven.annotated"))
-    print("Wrote annotated spacehaven library")
+    annotatedHavenPath = os.path.join(corePath, "library", "haven.annotated")
+    haven.write(annotatedHavenPath)
+    ui.log.log("    Wrote annotated spacehaven library to {}".format(annotatedHavenPath))

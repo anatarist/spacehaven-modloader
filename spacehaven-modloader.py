@@ -10,6 +10,7 @@ from tkinter import *
 import ui.header
 import ui.database
 import ui.launcher
+import ui.log
 
 import loader.extract
 import loader.load
@@ -133,6 +134,12 @@ class Window(Frame):
 
         if not os.path.exists(self.modPath):
             os.mkdir(self.modPath)
+
+        ui.log.setGameModPath(self.modPath)
+        ui.log.log("Discovered game at {}".format(path))
+        ui.log.log("  gamePath: {}".format(self.gamePath))
+        ui.log.log("  modPath: {}".format(self.modPath))
+        ui.log.log("  jarPath: {}".format(self.jarPath))
 
         self.spacehavenText.delete(0, 'end')
         self.spacehavenText.insert(0, self.gamePath)

@@ -5,6 +5,8 @@ import lxml.etree
 
 import loader.assets.library
 
+import ui.log
+
 
 def mods(corePath, modPaths):
     # Load the core library files
@@ -15,7 +17,7 @@ def mods(corePath, modPaths):
 
     # Merge in modded files
     for mod in modPaths:
-        print("Loading mod {}...\n".format(mod))
+        ui.log.log("  Loading mod {}...".format(mod))
 
         # Load the mod's library
         modLibrary = {}
@@ -33,8 +35,6 @@ def mods(corePath, modPaths):
         mergeDefinitions(coreLibrary, modLibrary, file="library/texts", xpath="/t", idAttribute="id")
         mergeDefinitions(coreLibrary, modLibrary, file="library/animations", xpath="/AllAnimations/animations", idAttribute="id")
 
-        print()
-
     # Write out the new base library
     for filename in loader.assets.library.PATCHABLE_FILES:
         with open(os.path.join(corePath, filename.replace('/', os.sep)), "wb") as f:
@@ -43,14 +43,14 @@ def mods(corePath, modPaths):
 
 def mergeDefinitions(baseLibrary, modLibrary, file, xpath, idAttribute):
     if not file in modLibrary:
-        print("  {}: Not present".format(file))
+        ui.log.log("  {}: Not present".format(file))
         return
 
     try:
         baseRoot = baseLibrary[file].xpath(xpath)[0]
         modRoot = modLibrary[file].xpath(xpath)[0]
     except IndexError:
-        print("  {}: Nothing at {}".format(file, xpath))
+        ui.log.log("  {}: Nothing at {}".format(file, xpath))
         return
 
     for element in list(modRoot):
@@ -61,4 +61,4 @@ def mergeDefinitions(baseLibrary, modLibrary, file, xpath, idAttribute):
 
         baseRoot.append(copy.deepcopy(element))
 
-    print("  {}: Merged {} elements into {}".format(file, len(list(modRoot)), xpath))
+    ui.log.log("    {}: Merged {} elements into {}".format(file, len(list(modRoot)), xpath))

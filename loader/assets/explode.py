@@ -9,6 +9,8 @@ import png
 
 import lxml.etree
 
+import ui.log
+
 
 class Texture:
     def __init__(self, path):
@@ -53,6 +55,8 @@ def explode(corePath):
 
     regions = textures.xpath("//re[@n]")
 
+    ui.log.log("  Exploding textures at {}...".format(corePath))
+
     for region in regions:
         name = region.get("n")
 
@@ -79,4 +83,4 @@ def explode(corePath):
     for page in cims:
         cims[page].save(os.path.join(corePath, 'library', 'textures.exploded', '{}.png'.format(page)))
 
-    print("Wrote {} extracted texture regions into textures.exploded".format(len(regions), os.getcwd()))
+    ui.log.log("    Wrote {} texture regions".format(len(regions)))
