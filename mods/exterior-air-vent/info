@@ -2,4 +2,7 @@
   <name>Exterior Air Vent</name>
   <description>An air vent that wall-mounts on the exterior of your ship. Useful for emergency venting and to maintain hard vacuums in e.g. industrial areas. Available under SHIP > AIRLOCK.</description>
   <minimumLoaderVersion>0.0.1</minimumLoaderVersion>
+  <gameVersions>
+    <v>0.4.1</v>
+  </gameVersions>
 </mod>
