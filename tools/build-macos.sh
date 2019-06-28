@@ -2,6 +2,8 @@
 
 VERSION=`python3 -c "import version; print(version.version)"`
 
+rm -rf build/*
+
 python3 setup.py build
 python3 setup.py bdist_mac --custom-info-plist tools/Info.plist
 
@@ -10,10 +12,10 @@ rm spacehaven-modloader-$VERSION.macos.zip
 zip -r spacehaven-modloader-$VERSION.macos.zip spacehaven-modloader-$VERSION.app
 popd
 
-pushd mods
-zip -r mods-$VERSION.zip *
-popd
+mkdir -p dist/
+mv build/*.zip dist/
 
-mv mods/mods-$VERSION.zip build/
+echo 'Packaging complete!'
+echo "Upload dist/* to GitHub"
 
-open build/
+open dist/
