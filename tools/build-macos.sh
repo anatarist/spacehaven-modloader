@@ -12,8 +12,13 @@ rm spacehaven-modloader-$VERSION.macos.zip
 zip -r spacehaven-modloader-$VERSION.macos.zip spacehaven-modloader-$VERSION.app
 popd
 
+pushd mods
+zip -r mods-$VERSION.zip *
+popd
+
 mkdir -p dist/
 mv build/*.zip dist/
+mv mods/*.zip dist/
 
 echo 'Packaging complete!'
 echo "Upload dist/* to GitHub"
