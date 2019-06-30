@@ -13,7 +13,7 @@ Download the latest release from [the releases page](https://github.com/anataris
 
 1. Make sure it found where you installed Space Haven. If it didn't, you'll need to locate it manually via the "Browse..." button in the top right corner.
 
-2. Click the "Open Folder..." button to open your game's `mods` folder.
+2. Click the "Open Mods Folder" button to open your game's `mods` folder.
 
 3. Download some mods and copy them in. There are a few example mods available from [the releases page](https://github.com/anatarist/spacehaven-modloader/releases) or you can find them elsewhere on the internet. When you're done your game folder should look something like this:
 
@@ -33,7 +33,7 @@ mods/
 
 4. Go back to the mod loader and make sure the mods you installed appear in the list. If they don't then you might not have installed them properly. Double check the folder structure.
 
-5. When you're ready click "Launch Spacehaven!" to play with mods. The mod loader will load the mods into the game, launch the game, and then unload them again when the game exits.
+5. When you're ready click "Launch Space Haven!" to play with mods. The mod loader will load the mods into the game, launch the game, and then unload them again when the game exits.
 
 
 ## Modding Guide
