@@ -47,7 +47,7 @@ The main file of interest is `library/haven.annotated`, which is an annotated co
 Mods follow the same folder structure and file format and should be reasonably obvious from the included sample mods.
 
 Note that because mods are loaded by doing an id-wise merge with the base game library, only the following files and tags are currently supported:
-- `Element`s, `Product`s, `ObjectiveCollection`s, and `Notes` in `library/haven`
+- All definitions in `library/haven`
 - `animations` in `library/animations`
 - `t`s in `library/texts`
 
