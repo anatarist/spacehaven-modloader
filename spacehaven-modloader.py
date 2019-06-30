@@ -142,12 +142,12 @@ class Window(Frame):
         ui.log.log("  modPath: {}".format(self.modPath))
         ui.log.log("  jarPath: {}".format(self.jarPath))
 
+        self.checkForLoadedMods()
+
         self.gameInfo = ui.gameinfo.GameInfo(self.jarPath)
 
         self.spacehavenText.delete(0, 'end')
         self.spacehavenText.insert(0, self.gamePath)
-
-        self.checkForLoadedMods()
 
         self.refreshModList()
 
